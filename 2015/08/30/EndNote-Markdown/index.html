@@ -15,17 +15,25 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="最近正在学习用 Markdown 写文章，网上搜了一圈，没找到称心的插入参考资料列表 Reference 的方法。想起自己一直在用 EndNote 管理文献，索性网络博文的文献也用 EndNote 管理好了。 　　参考 Markdown 的语法，修改了 EndNote 文献的导出格式，生成的列表较简洁，样式自定义，排序和维护都比较方便，基本满足了自己的要求。 　　下面是实现过程，稍作记录供参考">
+<meta name="keywords" content="EndNote,Markdown,Reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://caokai8213.github.io/2019/01/20/hello-world/index.html">
+<meta property="og:title" content="EndNote 与 Markdown 结合 — 为网文快速添加 Reference">
+<meta property="og:url" content="https://caokai8213.github.io/2015/08/30/EndNote-Markdown/index.html">
 <meta property="og:site_name" content="caoKai Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="最近正在学习用 Markdown 写文章，网上搜了一圈，没找到称心的插入参考资料列表 Reference 的方法。想起自己一直在用 EndNote 管理文献，索性网络博文的文献也用 EndNote 管理好了。 　　参考 Markdown 的语法，修改了 EndNote 文献的导出格式，生成的列表较简洁，样式自定义，排序和维护都比较方便，基本满足了自己的要求。 　　下面是实现过程，稍作记录供参考">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-20T10:07:36.295Z">
+<meta property="og:image" content="https://caokai8213.github.io/resources/EndNote-files.jpg">
+<meta property="og:image" content="https://caokai8213.github.io/resources/EndNote-Style.gif">
+<meta property="og:image" content="https://caokai8213.github.io/resources/EndNote-add.gif">
+<meta property="og:image" content="https://caokai8213.github.io/resources/Reference-Type.gif">
+<meta property="og:image" content="https://caokai8213.github.io/resources/EndNote-item.jpg">
+<meta property="og:image" content="https://caokai8213.github.io/resources/EndNote-templates.gif">
+<meta property="og:updated_time" content="2019-01-20T14:59:58.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="EndNote 与 Markdown 结合 — 为网文快速添加 Reference">
+<meta name="twitter:description" content="最近正在学习用 Markdown 写文章，网上搜了一圈，没找到称心的插入参考资料列表 Reference 的方法。想起自己一直在用 EndNote 管理文献，索性网络博文的文献也用 EndNote 管理好了。 　　参考 Markdown 的语法，修改了 EndNote 文献的导出格式，生成的列表较简洁，样式自定义，排序和维护都比较方便，基本满足了自己的要求。 　　下面是实现过程，稍作记录供参考">
+<meta name="twitter:image" content="https://caokai8213.github.io/resources/EndNote-files.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -55,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | caoKai Blog</title>
+<title>EndNote 与 Markdown 结合 — 为网文快速添加 Reference | caoKai Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -199,11 +207,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-EndNote-Markdown" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/20/hello-world/" class="article-date">
-      <time datetime="2019-01-20T10:07:36.295Z" itemprop="datePublished">2019-01-20</time>
+      <a href="/2015/08/30/EndNote-Markdown/" class="article-date">
+      <time datetime="2015-08-29T16:00:00.000Z" itemprop="datePublished">2015-08-30</time>
 </a>
 
 
@@ -218,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      EndNote 与 Markdown 结合 — 为网文快速添加 Reference
     </h1>
   
 
@@ -226,8 +234,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/触类旁通/">触类旁通</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EndNote/">EndNote</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reference/">Reference</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -235,15 +251,43 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>　　最近正在学习用 Markdown 写文章，网上搜了一圈，没找到称心的插入参考资料列表 Reference 的方法。想起自己一直在用 EndNote 管理文献，索性网络博文的文献也用 EndNote 管理好了。</p>
+<p>　　参考 Markdown 的语法，修改了 EndNote 文献的导出格式，生成的列表较简洁，样式自定义，排序和维护都比较方便，基本满足了自己的要求。</p>
+<p>　　下面是实现过程，稍作记录供参考，具体细节样式取决于 Markdown 样式配置。<br><a id="more"></a></p>
+<p><strong>相关程序: </strong></p>
+<ul>
+<li>EndNote X7 </li>
+<li>Windows 10</li>
+<li>马克飞象 &amp; Mou</li>
+</ul>
+<hr>
+<h3 id="导入与配置"><a href="#导入与配置" class="headerlink" title="导入与配置"></a>导入与配置</h3><ol>
+<li>配置文件下载：→ <a href="/resources/EndNote-MOxFIVE.zip">EndNote-MOxFIVE.zip</a><br><img src="/resources/EndNote-files.jpg" alt="EndNote-files"></li>
+<li>如下图获取 Style Folder 路径然后在资源管理器里打开 → 把下载解压得到的两个 ens 格式拷入其中;<br><img src="/resources/EndNote-Style.gif" alt="EndNote-Style"></li>
+<li>如下图打开样式管理器，找到并勾选新添加的两种样式；<br><img src="/resources/EndNote-add.gif" alt="EndNote-add"></li>
+<li>打开 EndNote → Preferences → 导入下载的 Reference Type.xml → 默认 type 选择“1.web” → 点确定退出；<br><img src="/resources/Reference-Type.gif" alt="Reference-Type"> </li>
+</ol>
+<h3 id="生成列表"><a href="#生成列表" class="headerlink" title="生成列表"></a>生成列表</h3><ol>
+<li>如下图，下拉列表切换为 Markdown List 样式，点新建文献按钮，填入作者、标题、日期和链接后保存；<br><img src="/resources/EndNote-item.jpg" alt="EndNote-item"></li>
+<li><p>选取添加好的文献，右键选 Copy Formatted，在 Markdown 正文末尾加一个标题，把列表粘贴其下；</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### 参考资料:</span></span><br><span class="line"><span class="bullet">1. </span><span class="strong">***认识与入门 Markdown**</span><span class="bullet">* by *</span><span class="emphasis">*Te_Lee*</span>* on &lt;code&gt;2014/04/17&lt;/code&gt;: &lt;http://sspai.com/25137&gt; </span><br><span class="line"><span class="bullet">1. </span><span class="strong">***Markdown 语法说明**</span><span class="bullet">* by *</span><span class="emphasis">*riku*</span>* on &lt;code&gt;2012&lt;/code&gt;: &lt;http://wowubuntu.com/markdown/&gt; </span><br><span class="line"><span class="bullet">1. </span><span class="strong">***使用 GitHub 和 Hexo 搭建免费静态 Blog**</span><span class="bullet">* by *</span><span class="emphasis">*wsgzao*</span>* on &lt;code&gt;2015/03/23&lt;/code&gt;: &lt;https://www.v2ex.com/t/178642&gt; </span><br><span class="line">~~~~~~~~~</span><br><span class="line"><span class="section">##### 上面是文章List样式，单一主页的样式先切换到Markdown Homepage再复制; </span></span><br><span class="line"><span class="bullet">1. </span><span class="strong">**GitHub**</span>: &lt;https://github.com/MOxFIVE&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><ol>
+<li><strong>GitHub</strong>: <a href="https://github.com/MOxFIVE" target="_blank" rel="noopener">https://github.com/MOxFIVE</a> </li>
+<li><strong><em>认识与入门 Markdown</em></strong> by <strong>Te_Lee</strong> on <code>2014/04/17</code>: <a href="http://sspai.com/25137" target="_blank" rel="noopener">http://sspai.com/25137</a> </li>
+<li><strong><em>Markdown 语法说明</em></strong> by <strong>riku</strong> on <code>2012</code>: <a href="http://wowubuntu.com/markdown/" target="_blank" rel="noopener">http://wowubuntu.com/markdown/</a> </li>
+<li><strong><em>使用 GitHub 和 Hexo 搭建免费静态 Blog</em></strong> by <strong>wsgzao</strong> on <code>2015/03/23</code>: <a href="https://www.v2ex.com/t/178642" target="_blank" rel="noopener">https://www.v2ex.com/t/178642</a> </li>
+<li>更长预览请参看本人另一篇日志的 <a href="/2015/08/20/blog-building/#参考资料:">参考资料列表</a>。</li>
+</ol>
+<h3 id="一些取舍"><a href="#一些取舍" class="headerlink" title="一些取舍"></a>一些取舍</h3><ul>
+<li>EndNote 里的样式配置尽量使用 Markdown 语法编写，保证对各个 Markdown 编辑器的兼容性；</li>
+<li><code>&lt;code&gt;2012&lt;/code&gt;</code>日期这里不用 Markdown 写法，因为有关符号 ` 在 EndNote 中被用于引入变量；  </li>
+<li>显示完整网址，便于识别来源；</li>
+<li><code>1.</code>的列表写法主要为了便于批量生成以及自由排序，只是某些编辑器可能不兼容这个写法；</li>
+<li>原本标题想用书名号《》包起来，但感觉不少内容不应该用书名号，最后还是使用斜体表示标题；</li>
+<li>上面预览样式是按我个人喜好配的，需要调整的话可自行琢磨参数修改模板。<br><img src="/resources/EndNote-templates.gif" alt="EndNote-templates"></li>
+</ul>
 
       
     </div>
@@ -252,13 +296,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/20/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2015/08/30/EndNote-Markdown/">EndNote 与 Markdown 结合 — 为网文快速添加 Reference</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">曹恺</a></p>
-        <p><span>发布时间:</span>2019-01-20, 18:07:36</p>
-        <p><span>最后更新:</span>2019-01-20, 18:07:36</p>
+        <p><span>发布时间:</span>2015-08-30, 00:00:00</p>
+        <p><span>最后更新:</span>2019-01-20, 22:59:58</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/20/hello-world/" title="Hello World">https://caokai8213.github.io/2019/01/20/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://caokai8213.github.io/2019/01/20/hello-world/　　作者: 曹恺" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2015/08/30/EndNote-Markdown/" title="EndNote 与 Markdown 结合 — 为网文快速添加 Reference">https://caokai8213.github.io/2015/08/30/EndNote-Markdown/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://caokai8213.github.io/2015/08/30/EndNote-Markdown/　　作者: 曹恺" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -270,10 +314,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/09/20/windows-mac-software/">
+                    自用 Windows 和 Mac 软件推荐
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/14/duoshuo-disqus-comment-count/">
-                    获取多说和 Disqus 文章评论数的方法
+                <a href="/2015/08/28/Front-End-Study/">
+                    个人 Web 前端学习路线
                 </a>
             </div>
         
@@ -285,7 +335,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#导入与配置"><span class="toc-number">1.</span> <span class="toc-text">导入与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成列表"><span class="toc-number">2.</span> <span class="toc-text">生成列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果预览"><span class="toc-number">3.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些取舍"><span class="toc-number">4.</span> <span class="toc-text">一些取舍</span></a></li></ol>
         
     </div>
     <style>
@@ -321,7 +371,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| caoKai Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"EndNote 与 Markdown 结合 — 为网文快速添加 Reference　| caoKai Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -341,13 +391,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2015/09/20/windows-mac-software/" title="上一篇: 自用 Windows 和 Mac 软件推荐">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/14/duoshuo-disqus-comment-count/" title="下一篇: 获取多说和 Disqus 文章评论数的方法">
+            <a href="/2015/08/28/Front-End-Study/" title="下一篇: 个人 Web 前端学习路线">
                 <i class="fa fa-angle-right"></i>
             </a>
         

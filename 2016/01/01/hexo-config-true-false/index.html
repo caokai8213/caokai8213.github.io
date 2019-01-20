@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="在使用文件 “_config.yml” 对 Hexo 进行配置时，大家习惯于填写 true 和 false 来启用/停用某个功能模块。不过还有几种方法可以表示逻辑真假(boolean)，掌握后可以更灵活地进行功能配置。">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://caokai8213.github.io/2019/01/20/hello-world/index.html">
+<meta property="og:title" content="关于 Hexo 配置文件中的 true 和 false">
+<meta property="og:url" content="https://caokai8213.github.io/2016/01/01/hexo-config-true-false/index.html">
 <meta property="og:site_name" content="caoKai Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="在使用文件 “_config.yml” 对 Hexo 进行配置时，大家习惯于填写 true 和 false 来启用/停用某个功能模块。不过还有几种方法可以表示逻辑真假(boolean)，掌握后可以更灵活地进行功能配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-20T10:07:36.295Z">
+<meta property="og:updated_time" content="2019-01-20T14:59:58.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="关于 Hexo 配置文件中的 true 和 false">
+<meta name="twitter:description" content="在使用文件 “_config.yml” 对 Hexo 进行配置时，大家习惯于填写 true 和 false 来启用/停用某个功能模块。不过还有几种方法可以表示逻辑真假(boolean)，掌握后可以更灵活地进行功能配置。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | caoKai Blog</title>
+<title>关于 Hexo 配置文件中的 true 和 false | caoKai Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -199,11 +200,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo-config-true-false" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/20/hello-world/" class="article-date">
-      <time datetime="2019-01-20T10:07:36.295Z" itemprop="datePublished">2019-01-20</time>
+      <a href="/2016/01/01/hexo-config-true-false/" class="article-date">
+      <time datetime="2016-01-01T15:55:13.000Z" itemprop="datePublished">2016-01-01</time>
 </a>
 
 
@@ -218,7 +219,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      关于 Hexo 配置文件中的 true 和 false
     </h1>
   
 
@@ -226,8 +227,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/术业专攻/">术业专攻</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -235,15 +244,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>　　在使用文件 “_config.yml” 对 Hexo 进行配置时，大家习惯于填写 true 和 false 来启用/停用某个功能模块。不过还有几种方法可以表示逻辑真假(boolean)，掌握后可以更灵活地进行功能配置。</p>
+<a id="more"></a>
+<h2 id="false"><a href="#false" class="headerlink" title="false"></a>false</h2><p>如果配置文件中有一个选项 <code>search_box</code>，那下面几种写法都表示该选项逻辑值为假：false。</p>
+<p>即当使用 if (theme.search_box) 进行判断时返回 false. </p>
+<p>1－常规写法</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>2－前面加 “#”，把该选项变为注释，判断时自然也就 false 了</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#search_box: false</span></span><br></pre></td></tr></table></figure>
+<p>3－用 0 代替。填写 0 时（不含引号），该项会被判断为 false</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>4－选项留空。留空默认也会判断为 false</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span></span><br></pre></td></tr></table></figure>
+<h2 id="true"><a href="#true" class="headerlink" title="true"></a>true</h2><p>下面几种写法都表示该选项逻辑值为假：true。即当使用 if (theme.search_box) 进行判断时返回 true. </p>
+<p>1－常规写法</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>2－用 1 代替。填 1 时，该项会被判断为 true</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>3－填 0 之外的其他字符，通常也会被判断为 true</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search_box:</span> <span class="string">Hexo</span> <span class="string">Yelee</span></span><br><span class="line"><span class="attr">search_box:</span> <span class="number">998</span></span><br><span class="line"><span class="attr">search_box:</span> <span class="string">"0"</span></span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>为了减少误解，在 <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="noopener">Yelee</a> 主题的配置中我基本还是使用常规写法。如果大家都能了解这些写法的话，应该能更开心地折腾 Hexo。对配置还有兴趣的，可以去看看 <a href="https://learnxinyminutes.com/docs/zh-cn/yaml-cn/" target="_blank" rel="noopener">YAML 语法说明</a>，Hexo 的配置文件默认就是使用 YAML 编写。</p>
 
       
     </div>
@@ -252,13 +272,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/20/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2016/01/01/hexo-config-true-false/">关于 Hexo 配置文件中的 true 和 false</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">曹恺</a></p>
-        <p><span>发布时间:</span>2019-01-20, 18:07:36</p>
-        <p><span>最后更新:</span>2019-01-20, 18:07:36</p>
+        <p><span>发布时间:</span>2016-01-01, 23:55:13</p>
+        <p><span>最后更新:</span>2019-01-20, 22:59:58</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/20/hello-world/" title="Hello World">https://caokai8213.github.io/2019/01/20/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://caokai8213.github.io/2019/01/20/hello-world/　　作者: 曹恺" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/01/hexo-config-true-false/" title="关于 Hexo 配置文件中的 true 和 false">https://caokai8213.github.io/2016/01/01/hexo-config-true-false/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://caokai8213.github.io/2016/01/01/hexo-config-true-false/　　作者: 曹恺" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -270,10 +290,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/02/hexo-comments/">
+                    为 Hexo 主题添加评论模块 — Disqus, 多说, 友言
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/14/duoshuo-disqus-comment-count/">
-                    获取多说和 Disqus 文章评论数的方法
+                <a href="/2015/12/22/anki-excel-shortcuts/">
+                    Anki 记忆库之 Excel 快捷键大全
                 </a>
             </div>
         
@@ -281,29 +307,6 @@
 
   
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
 
 
 
@@ -321,7 +324,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| caoKai Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"关于 Hexo 配置文件中的 true 和 false　| caoKai Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -341,13 +344,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/01/02/hexo-comments/" title="上一篇: 为 Hexo 主题添加评论模块 — Disqus, 多说, 友言">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/14/duoshuo-disqus-comment-count/" title="下一篇: 获取多说和 Disqus 文章评论数的方法">
+            <a href="/2015/12/22/anki-excel-shortcuts/" title="下一篇: Anki 记忆库之 Excel 快捷键大全">
                 <i class="fa fa-angle-right"></i>
             </a>
         

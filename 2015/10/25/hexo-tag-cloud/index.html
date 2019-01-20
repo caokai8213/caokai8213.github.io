@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="曹恺">
+
+
+
+<meta name="description" content="前言参看上篇 创建404页面 的文章，我们可以轻易地创建一个链接为 http://&amp;quot;主页&amp;quot;/tags/ 的页面，然后编辑对应 .md 文件设置样式。在此基础上，我们还需要在主题 layout 布局中添加代码，引入辅助函数，才能自动生成所需的标签云页面。下面简单介绍下实现过程。">
+<meta name="keywords" content="Hexo,TagCloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让 Hexo 自动生成 Tag Cloud 标签云页面">
+<meta property="og:url" content="https://caokai8213.github.io/2015/10/25/hexo-tag-cloud/index.html">
+<meta property="og:site_name" content="caoKai Blog">
+<meta property="og:description" content="前言参看上篇 创建404页面 的文章，我们可以轻易地创建一个链接为 http://&amp;quot;主页&amp;quot;/tags/ 的页面，然后编辑对应 .md 文件设置样式。在此基础上，我们还需要在主题 layout 布局中添加代码，引入辅助函数，才能自动生成所需的标签云页面。下面简单介绍下实现过程。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://caokai8213.github.io/resources/tag-cloud.png">
+<meta property="og:updated_time" content="2019-01-20T14:59:58.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="让 Hexo 自动生成 Tag Cloud 标签云页面">
+<meta name="twitter:description" content="前言参看上篇 创建404页面 的文章，我们可以轻易地创建一个链接为 http://&amp;quot;主页&amp;quot;/tags/ 的页面，然后编辑对应 .md 文件设置样式。在此基础上，我们还需要在主题 layout 布局中添加代码，引入辅助函数，才能自动生成所需的标签云页面。下面简单介绍下实现过程。">
+<meta name="twitter:image" content="https://caokai8213.github.io/resources/tag-cloud.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/silver/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>让 Hexo 自动生成 Tag Cloud 标签云页面 | caoKai Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">曹恺</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:yoona8213@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/caokai8213" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">曹恺</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">曹恺</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:yoona8213@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/caokai8213" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-hexo-tag-cloud" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/25/hexo-tag-cloud/" class="article-date">
+      <time datetime="2015-10-25T04:08:49.000Z" itemprop="datePublished">2015-10-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      让 Hexo 自动生成 Tag Cloud 标签云页面
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/术业专攻/">术业专攻</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TagCloud/">TagCloud</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p></p><h2 id="intro">前言</h2>参看上篇 <a href="/2015/10/16/hexo-404-page/">创建404页面</a> 的文章，我们可以轻易地创建一个链接为 <code>http://&quot;主页&quot;/tags/</code> 的页面，然后编辑对应 .md 文件设置样式。在此基础上，我们还需要在主题 layout 布局中添加代码，引入辅助函数，才能自动生成所需的标签云页面。下面简单介绍下实现过程。<p></p>
+<a id="more"></a>
+<p><img src="/resources/tag-cloud.png" alt="tag-cloud"></p>
+<h2 id="匹配页面"><a href="#匹配页面" class="headerlink" title="匹配页面"></a>匹配页面</h2><p>在主题文章的 layout 中合适位置插入下列 if 语句，让代码只在标签云页面生效。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- page.path 表示不含根路径的页面网址。还有数种方式可以匹配页面，在此不赘述。 --&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (page.path === <span class="string">"tags/index.html"</span>)&#123; %&gt;</span><br><span class="line">    &lt;引入 tags 页面的代码&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>以主题 <a href="https://github.com/MOxFIVE/hexo-theme-yelee" title="简而不减 Hexo 双栏博客主题" target="_blank" rel="noopener">Yelee</a> 为例，须在 <code>/layout/_partial/article.ejs</code>, div <code>article-entry</code> 中插入代码。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>="<span class="title">article</span>-<span class="title">entry</span>" <span class="title">itemprop</span>="<span class="title">articleBody</span>"&gt;</span></span><br><span class="line"><span class="class">    &lt;% <span class="title">if</span> (<span class="title">post</span>.<span class="title">excerpt</span> &amp;&amp; <span class="title">index</span>)</span>&#123; %&gt;</span><br><span class="line">        &lt;%- post.excerpt %&gt;</span><br><span class="line">    &lt;% &#125; <span class="keyword">else</span> &#123; %&gt;</span><br><span class="line">        &lt;% <span class="keyword">if</span> (page.path === <span class="string">"tags/index.html"</span>)&#123; %&gt;</span><br><span class="line">            &lt;引入 tags 页面的代码&gt;</span><br><span class="line">        &lt;% &#125; %&gt;</span><br><span class="line">        &lt;%- post.content %&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="插入标签云"><a href="#插入标签云" class="headerlink" title="插入标签云"></a>插入标签云</h2><p>使用 Hexo 辅助函数 <code>&lt;%- tagcloud([tags], [options]) %&gt;</code> 插入标签云，参数详解请查看 <a href="https://hexo.io/zh-cn/docs/helpers.html#tagcloud" title="tagcloud: 插入标签云" target="_blank" rel="noopener">官方文档</a>。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- tagcloud(&#123;</span><br><span class="line">    min_font: <span class="number">16</span>, </span><br><span class="line">    max_font: <span class="number">35</span>, </span><br><span class="line">    amount: <span class="number">999</span>, </span><br><span class="line">    color: <span class="literal">true</span>, </span><br><span class="line">    start_color: <span class="string">'gray'</span>, </span><br><span class="line">    end_color: <span class="string">'black'</span>,</span><br><span class="line">&#125;) %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><p>审查元素，按需修改相关样式。下面是目前本博客 <a href="/tags">标签云页面</a> 所添加的代码，附上供参考。</p>
+<figure class="highlight erb"><figcaption><span>/layout/_partial/article.ejs</span><a href="https://github.com/MOxFIVE/hexo-theme-yelee/commit/3a82bb65b325826b3f71cae10e39e5314ccb63cb" target="_blank" rel="noopener">tag cloud page</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span> if (page.path === "tags/index.html")&#123; <span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">%-</span></span></span> list_categories(&#123;</span><br><span class="line">        depth: 1,</span><br><span class="line">    &#125;) <span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tags"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">%-</span></span></span> tagcloud(&#123;</span><br><span class="line">            min_font: 16, </span><br><span class="line">            max_font: 35, </span><br><span class="line">            amount: 999, </span><br><span class="line">            color: true, </span><br><span class="line">            start_color: 'gray', </span><br><span class="line">            end_color: 'black',</span><br><span class="line">        &#125;) <span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="xml">        .category-list li&#123;</span></span><br><span class="line"><span class="xml">            display: inline-block;</span></span><br><span class="line"><span class="xml">            margin: 0 1em .5em 0;</span></span><br><span class="line"><span class="xml">            padding: 4px;</span></span><br><span class="line"><span class="xml">            border: 1px solid lightgray;</span></span><br><span class="line"><span class="xml">            font-size: 1.2em;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .category-list a &#123;</span></span><br><span class="line"><span class="xml">            color: gray;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .category-list-item:hover a &#123;</span></span><br><span class="line"><span class="xml">            color: gray;</span></span><br><span class="line"><span class="xml">            text-decoration: none;</span></span><br><span class="line"><span class="xml">            font-weight: bold;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .category-list-count &#123;</span></span><br><span class="line"><span class="xml">            margin-left: 2px;</span></span><br><span class="line"><span class="xml">            font-size: .9em;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .article-entry ul li:before&#123;</span></span><br><span class="line"><span class="xml">            display: none;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .article-inner  &#123;</span></span><br><span class="line"><span class="xml">            text-align: center;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .tags &#123;</span></span><br><span class="line"><span class="xml">            max-width: 40em;</span></span><br><span class="line"><span class="xml">            margin: 2em auto;</span></span><br><span class="line"><span class="xml">            margin-top: 0em;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .tags a &#123;</span></span><br><span class="line"><span class="xml">            margin-right: 1em;</span></span><br><span class="line"><span class="xml">            border-bottom: 1px solid gray;</span></span><br><span class="line"><span class="xml">            line-height: 65px;</span></span><br><span class="line"><span class="xml">            white-space: nowrap;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">        .tags a:hover &#123;</span></span><br><span class="line"><span class="xml">            border-bottom: 2px solid black;</span></span><br><span class="line"><span class="xml">            font-style: italic;</span></span><br><span class="line"><span class="xml">            text-decoration: none;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span> &#125; <span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>知道怎么在特定页面中引入 Hexo 自带的函数和变量后，大家应该就可以比较自在地在文章中引入需要的内容了，标签列表，文章列表，文章地址，日期时间等都可以。</p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><strong><em>tagcloud: 插入标签云</em></strong> by <strong>Hexo</strong> on <code>2015</code>: <a href="https://hexo.io/zh-cn/docs/helpers.html#tagcloud" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/helpers.html#tagcloud</a></li>
+<li><strong><em>变量使用</em></strong> by <strong>Hexo</strong> on <code>2015</code>: <a href="https://hexo.io/zh-cn/docs/variables.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/variables.html</a></li>
+<li><strong><em>feat: tags cloud page 标签云页面</em></strong> by <strong>MOxFIVE</strong> on <code>2015/10/12</code>: <a href="https://github.com/MOxFIVE/hexo-theme-yelee/commit/3a82bb65b325826b3f71cae10e39e5314ccb63cb" target="_blank" rel="noopener">https://github.com/MOxFIVE/hexo-theme-yelee/commit/3a82bb65b325826b3f71cae10e39e5314ccb63cb</a></li>
+<li><strong><em>统计分类及标签数</em></strong> by <strong>MOxFIVE</strong> on <code>2015/12/1</code>: <a href="https://github.com/MOxFIVE/hexo-theme-yelee/commit/56abe4226454571335a62120ab404792f274437f" target="_blank" rel="noopener">https://github.com/MOxFIVE/hexo-theme-yelee/commit/56abe4226454571335a62120ab404792f274437f</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/10/25/hexo-tag-cloud/">让 Hexo 自动生成 Tag Cloud 标签云页面</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">曹恺</a></p>
+        <p><span>发布时间:</span>2015-10-25, 12:08:49</p>
+        <p><span>最后更新:</span>2019-01-20, 22:59:58</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/10/25/hexo-tag-cloud/" title="让 Hexo 自动生成 Tag Cloud 标签云页面">https://caokai8213.github.io/2015/10/25/hexo-tag-cloud/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://caokai8213.github.io/2015/10/25/hexo-tag-cloud/　　作者: 曹恺" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/10/31/excel-markdown-table/">
+                    用 Excel 生成和管理 Markdown 表格
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/10/16/hexo-404-page/">
+                    在 Hexo 中创建匹配主题的404页面
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#intro"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配页面"><span class="toc-number">2.</span> <span class="toc-text">匹配页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入标签云"><span class="toc-number">3.</span> <span class="toc-text">插入标签云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义样式"><span class="toc-number">4.</span> <span class="toc-text">自定义样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"让 Hexo 自动生成 Tag Cloud 标签云页面　| caoKai Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/10/31/excel-markdown-table/" title="上一篇: 用 Excel 生成和管理 Markdown 表格">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/10/16/hexo-404-page/" title="下一篇: 在 Hexo 中创建匹配主题的404页面">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/duoshuo-disqus-comment-count/">获取多说和 Disqus 文章评论数的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/hexo-collapsible-toc/">为 Hexo 添加可折叠的文章目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/hexo-local-search/">让 Hexo 博客支持本地站内搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/17/image-compression/">关于 Yelee 主题背景图的压缩与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/public-dns/">几个国内专用的公共 DNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/20/baidu-share-fontawesome/">在百度分享中使用 Font Awesome 图标</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/text-overflow-ellipsis/">CSS 设置文本省略 ellipsis (…)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/27/hexo-browsersync/">Hexo 页面自动刷新与移动端调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/markdown-table-style/">Markdown 表格样式调整与自适应优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/16/front-end-tools/">前端工程化工具初选</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/hexo-post-version-control/">关联 GitHub, 让 Hexo 支持查看文章更新历史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/02/hexo-comments/">为 Hexo 主题添加评论模块 — Disqus, 多说, 友言</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/01/hexo-config-true-false/">关于 Hexo 配置文件中的 true 和 false</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/anki-excel-shortcuts/">Anki 记忆库之 Excel 快捷键大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/common-hexo-commands/">Hexo 最常用的几个命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/09/css-font-family/">CSS font-family 网页字体使用小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/30/sublime-config/">Sublime Text 3 使用配置与插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/anki-templates/">Anki 自用卡片模板分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/git-command/">Git 基础命令与相关术语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/16/png-gif-transparency/">制作透明背景 PNG 图片和 GIF 动图的几种方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/09/web-style-guide/">Web Style Guide 前端代码规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/hexo-deployment/">将 Hexo 博客部署到 GitHub Pages</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/excel-markdown-table/">用 Excel 生成和管理 Markdown 表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/25/hexo-tag-cloud/">让 Hexo 自动生成 Tag Cloud 标签云页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/hexo-404-page/">在 Hexo 中创建匹配主题的404页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/29/duoshuo-style/">多说样式折腾记录 — 添加 UA 浏览器标识、旋转头像等</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/windows-mac-software/">自用 Windows 和 Mac 软件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/EndNote-Markdown/">EndNote 与 Markdown 结合 — 为网文快速添加 Reference</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/28/Front-End-Study/">个人 Web 前端学习路线</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/20/blog-building/">个人博客站点建设历程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/19/2015-08-19.hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-center">
+                <i class="fa fa-copyright"></i> 
+                2019 曹恺
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span> </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
