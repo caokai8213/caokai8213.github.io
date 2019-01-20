@@ -67,7 +67,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
+        search: true
     }
 </script>
 
@@ -97,13 +97,19 @@
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">曹恺</a></h1>
-          <h5 class="header-subtitle">南京</h5>
         </hgroup>
 
         
         <p class="header-subtitle">We live and learn.</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -118,6 +124,8 @@
                             <li><a href="/">主页</a></li>
                         
                             <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/essay/">随笔</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
                         
@@ -179,6 +187,8 @@
                     <li><a href="/">主页</a></li>
                 
                     <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/essay/">随笔</a></li>
                 
                     <li><a href="/tags/">标签云</a></li>
                 
